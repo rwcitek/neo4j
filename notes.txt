@@ -15,3 +15,6 @@ docker run -d --name=graphdb -p 7474:7474 neo4j ./src/neo4j-community-3.0.3/bin/
 docker.container.kill graphdb
 docker.container.delete -v graphdb
 
+# verify
+curl -s http://localhost:7474 | jq .
+
