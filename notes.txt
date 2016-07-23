@@ -6,13 +6,13 @@ docker build --tag=neo4j ../neo4j && docker tag neo4j neo4j:3.0.3
 docker.container.new.image -i -t --name=graphdb neo4j /bin/bash
 docker.container.start graphdb
 docker exec -i -t graphdb /bin/bash
-docker.container.kill graphdb
+docker.container.stop graphdb
 docker.container.delete -v graphdb
 
 # create/delete service container (takes about 20 seconds to start up)
 docker run -d --name=graphdb -p 7474:7474 neo4j ./src/neo4j-community-3.0.3/bin/neo4j console &&
   sleep 20
-docker.container.kill graphdb
+docker.container.stop graphdb
 docker.container.delete -v graphdb
 
 # verify
